@@ -50,3 +50,16 @@ h1 {
     padding: 10px 50px;
     text-decoration: none;
 }
+.ImagenColaborador{
+    height: 300px;
+    width: 300px;
+    }
+    .Descripcion{
+      font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      
+    }
+    .Parrafo{
+      color:brown;
+      font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+    
