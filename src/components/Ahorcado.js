@@ -10,4 +10,88 @@ import step4 from "./images/4.jpg";
 import step5 from "./images/5.jpg";
 import step6 from "./images/6.jpg";
 
+class Hangman extends Component {
+    static defaultProps = {
+      maxErrores: 6,
+      images: [step0, step1, step2, step3, step4, step5, step6]
+    }
+  
+    constructor(props) {
+      super(props);
+      this.state = {
+        error: 0,
+        adivinado: new Set([]),
+        respuesta: palabraRandom()
+      }
+    }
+  
+    adivinar = e => {
+      let letter = e.target.value;
+      this.setState(st => ({
+        adivinado: st.adivinado.add(letter),
+        error: st.error + (st.respuesta.includes(letter) ? 0 : 1)
+      }));
+    }
+  
+    palabra_adivinada() {
+      return this.state.respuesta.split("").map(letter => (this.state.adivinado.has(letter) ? letter : " _ "));
+    }
+  
+    generarBotones() {
+      return "abcdefghjklmnopqrstuvwxyz".split("").map(letter => (
+        <button
+          class='btn btn-lg btn-primary m-2'
+          key={letter}
+          value={letter}
+          onClick={this.adivinar}
+          disabled={this.state.adivinado.has(letter)}
+        >
+          {letter}
+        </button>
+      ));
+    }
+  
+    ResetearBoton = () => {
+      this.setState({
+        error: 0,
+        adivinado: new Set([]),
+        respuesta: palabraRandom()
+      });
+    }
+  
+    render() {
+      const Perdedor = this.state.error >= this.props.maxErrores;
+      const Ganador = this.palabra_adivinada().join("") === this.state.respuesta;
+      let gameStat = this.generarBotones();
+  
+      if (Ganador) {
+        gameStat = "Ganaste!!!"
+      }
+  
+      if (Perdedor) {
+        gameStat = "Perdiste!!!"
+      }
+  
+      return (
+        <div className="Hangman container">
+          <h1 className='text-center'>Ahorcado</h1>
+          <div className="float-right">Suposiciones incorrectas: {this.state.error} de {this.props.maxErrores}</div>
+          <div className="text-center">
+            <img src={this.props.images[this.state.error]} alt=""/>
+          </div>
+          <div className="text-center">
+            <p>Adivinna la palabra:Son lenguajes de programacion</p>
+            <p>
+              {!Perdedor ? this.palabra_adivinada() : this.state.respuesta}
+            </p>
+            <p>{gameStat}</p>
+            <button className='btn btn-info' onClick={this.ResetearBoton}>Reiniciar</button>
+          </div>
+        </div>
+      )
+    }
+  }
+  
+  export default Hangman;
+
 
