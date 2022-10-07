@@ -11,8 +11,8 @@ function App() {
     <Router>
       <Routes>
         <Route path= "/"element={<Paginaprincipal/>}/>;
-        <Route path= "/Colaboradores" element={<Colaboradores/>}/>;
-        <Route path= "/Jugar" element={<Jugar/>}/>;
+        <Route path= "/Colaboradores" element={<Colaboradores/>}className='Inicio'/>;
+        <Route path= "/Jugar" element={<Jugar/>}className='Inicio'/>;
 
         
       </Routes>
