@@ -37,10 +37,9 @@ class Hangman extends Component {
       return this.state.respuesta.split("").map(letter => (this.state.adivinado.has(letter) ? letter : " _ "));
     }
   
-    generarBotones() {
-      return "abcdefghjklmnopqrstuvwxyz".split("").map(letter => (
-        <button
-          class='btn btn-lg btn-primary m-2'
+    generarBotones () {
+      return "abcdefghijklmnopqrstuvwxyz".split("").map(letter => (
+        <button className='Boton'
           key={letter}
           value={letter}
           onClick={this.adivinar}
@@ -80,12 +79,12 @@ class Hangman extends Component {
             <img src={this.props.images[this.state.error]} alt=""/>
           </div>
           <div className="text-center">
-            <p>Adivinna la palabra:Son lenguajes de programacion</p>
+            <p>Adivina la palabra: Son lenguajes de programacion</p>
             <p>
               {!Perdedor ? this.palabra_adivinada() : this.state.respuesta}
             </p>
             <p>{gameStat}</p>
-            <button className='btn btn-info' onClick={this.ResetearBoton}>Reiniciar</button>
+            <button className='Reiniciar' onClick={this.ResetearBoton}>Reiniciar</button>
           </div>
         </div>
       )
