@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import './Hangman.css';
-import { palabraRandom } from "./Palabras.js"
-
+import { palabraRandom } from "./Palabras.js";
+import sonido01 from "../components/sonidos/sonidoClick.mp3";
+import sonido02 from "../components/sonidos/sonidoGanar.mp3";
+import sonido03 from "../components/sonidos/sonidoPerder.mp3";
 import step0 from "./images/0.jpg";
 import step1 from "./images/1.jpg";
 import step2 from "./images/2.jpg";
@@ -38,6 +40,8 @@ class Hangman extends Component {
     }
   
     generarBotones () {
+
+
       return "abcdefghijklmnopqrstuvwxyz".split("").map(letter => (
         <button className='Boton'
           key={letter}
@@ -55,6 +59,7 @@ class Hangman extends Component {
         error: 0,
         adivinado: new Set([]),
         respuesta: palabraRandom()
+        
       });
     }
   
@@ -65,10 +70,12 @@ class Hangman extends Component {
   
       if (Ganador) {
         gameStat = "Ganaste!!!"
+        play(sonido02)
       }
   
       if (Perdedor) {
         gameStat = "Perdiste!!!"
+        play(sonido03)
       }
   
       return (
@@ -90,7 +97,10 @@ class Hangman extends Component {
       )
     }
   }
-  
+
+  function play(sonido) {
+    new Audio(sonido).play();
+  }
   export default Hangman;
 
 
