@@ -1,4 +1,5 @@
-var Lenguajes_De_Programacion = [
+var Lenguajes_De_Programacion = [ 
+	// Palabras asignadas que se usaran en el juego
 	"python",
 	"javascript",
 	"mongodb",
@@ -6,14 +7,14 @@ var Lenguajes_De_Programacion = [
 	"java",
 	"html",
 	"css",
-  "c",
+	"c",
 	"csharp",
 	"golang",
 	"kotlin",
 	"php",
 	"sql",
-  "ruby",
-  "fortran"
+	"ruby",
+	"fortran"
 ]
 
 function palabraRandom() {

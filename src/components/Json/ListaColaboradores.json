@@ -2,25 +2,26 @@
     {
         "img": "./img/Guille.jpeg",
         "Nombre": "Aprile Guillermo",
-        "Descripcion": "Soy el lider del grupo y me encargo que todo este correctamente hecho, corregir los errores y que todo este funcionando acorde al trabajo pedido."
-        
+        "Descripcion": "Soy el lider del grupo y me encargo que todo este correctamente hecho, corregir los errores y que todo este funcionando acorde al trabajo pedido.",
+        "Edad": "21 años"
     },
     {
         "img": "./img/Matias.jpeg",
         "Nombre": "Cruz Matias",
-        "Descripcion": "Como parte del grupo busco aplicar todos mis conocimientos y, al mismo tiempo adoro los retos y no me rindo fácilmente. Soy detallista y autodidacta cada día, nunca dejo de aprender."
-        
+        "Descripcion": "Como parte del grupo busco aplicar todos mis conocimientos y, al mismo tiempo adoro los retos y no me rindo fácilmente. Soy detallista y autodidacta cada día, nunca dejo de aprender.",
+        "Edad": "23 años"
     },
     {
         "img": "./img/Facundo.jpeg",
         "Nombre": "Ramirez Facundo",
-        "Descripcion": "Soy un tipo trabajador que está acostumbrado al trabajo bajo presión,también me considero una persona resolutiva, con buen ánimo y capaz de resolver problemas fácilmente."
-        
+        "Descripcion": "Soy un tipo trabajador que está acostumbrado al trabajo bajo presión,también me considero una persona resolutiva, con buen ánimo y capaz de resolver problemas fácilmente.",
+        "Edad": "20 años"
     },
     
     {
         "img": "./img/Juani.jpeg",
         "Nombre": "Villagra Juan",
-        "Descripcion": "Formo parte de este grupo, como persona organizada y con una gran motivación, soy capaz de adaptarme a cualquier circunstancia y dar siempre lo mejor de mí en cualquier proyecto."
+        "Descripcion": "Formo parte de este grupo, como persona organizada y con una gran motivación, soy capaz de adaptarme a cualquier circunstancia y dar siempre lo mejor de mí en cualquier proyecto.",
+        "Edad": "21 años"
     }
 ]

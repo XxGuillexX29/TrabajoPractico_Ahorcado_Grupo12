@@ -11,11 +11,8 @@ function Colaboradores() {
             <Row>
             {Listacolaboradores.map(listaC=>
             <ClaseColaboradores
-            img={listaC.img}Nombre={listaC.Nombre}Descripcion={listaC.Descripcion}></ClaseColaboradores>)}
+            img={listaC.img}Nombre={listaC.Nombre}Descripcion={listaC.Descripcion}Edad={listaC.Edad}></ClaseColaboradores>)}
             </Row>
         </Conteiner>
-        
-        
-        
     );
 } export default Colaboradores;
