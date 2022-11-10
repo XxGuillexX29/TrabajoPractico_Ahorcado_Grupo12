@@ -1,0 +1,6 @@
+[
+    {
+        "sonido02": "../components/sonidos/sonidoGanar.mp3",
+        "sonido03": "../components/sonidos/sonidoPerder.mp3"
+    }
+]

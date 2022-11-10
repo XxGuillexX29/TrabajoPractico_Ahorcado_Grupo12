@@ -1,7 +1,6 @@
 import React, { Component, useEffect } from 'react';
 import './Hangman.css';
 import { palabraRandom } from "./Palabras.js";
-import sonido01 from "../components/sonidos/sonidoClick.mp3";
 import sonido02 from "../components/sonidos/sonidoGanar.mp3";
 import sonido03 from "../components/sonidos/sonidoPerder.mp3";
 import step0 from "./images/0.jpg";
