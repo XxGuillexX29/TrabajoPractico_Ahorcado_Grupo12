@@ -4,15 +4,13 @@ import "../App.css";
 import { Link } from "react-router-dom";
 
 
-
+// Funcion de la Pagina principal
 function Home() {
     return (
         <><><><div className="principal">
             <h1>Ahorcado</h1>
 
         </div>
-
-
             <div className="imagen">
 
                 <img src={inicio} alt="Juego" />
