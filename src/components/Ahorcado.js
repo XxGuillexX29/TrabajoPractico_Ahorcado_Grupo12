@@ -7,6 +7,7 @@ import sonido01 from "./sonidos/sonidoGanar.mp3"
 import sonido02 from "./sonidos/sonidoPerder.mp3"
 import sonido03 from "./sonidos/sonidoClick.mp3"
 
+
 function Juego() {
   const [verOpcion, setVerOpcion] = useState('btn-option');
   const [intentos, setIntentos] = useState(0);
