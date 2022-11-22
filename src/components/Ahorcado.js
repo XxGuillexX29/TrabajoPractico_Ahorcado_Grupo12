@@ -1,106 +1,90 @@
-import React, { Component, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { getPalabraRandom } from './getPalabraRandom.js';
+import { letras } from './letras.js';
+import { AhorcadoImg } from './AhorcadoImg.jsx';
 import './Hangman.css';
-import { palabraRandom } from "./Palabras.js";
-import sonido01 from "../components/sonidos/sonidoClick.mp3";
-import sonido02 from "../components/sonidos/sonidoGanar.mp3";
-import sonido03 from "../components/sonidos/sonidoPerder.mp3";
-import step0 from "./images/0.jpg";
-import step1 from "./images/1.jpg";
-import step2 from "./images/2.jpg";
-import step3 from "./images/3.jpg";
-import step4 from "./images/4.jpg";
-import step5 from "./images/5.jpg";
-import step6 from "./images/6.jpg";
+import sonido01 from "./sonidos/sonidoGanar.mp3"
+import sonido02 from "./sonidos/sonidoPerder.mp3"
+import sonido03 from "./sonidos/sonidoClick.mp3"
 
-class Hangman extends Component {
-    static defaultProps = {
-      maxErrores: 6,
-      images: [step0, step1, step2, step3, step4, step5, step6]
+function Juego() {
+  const [verOpcion, setVerOpcion] = useState('btn-option');
+  const [intentos, setIntentos] = useState(0);
+  const [selectWord] = useState(getPalabraRandom);
+  const [Incog, setIncog] = useState('_ '.repeat(selectWord.length));
+  const [perder, setPerder] = useState(false);
+  const [ganar, setGanar] = useState(false);
+
+  useEffect(() => {
+    if (intentos === 6) {
+      setPerder(true);
+      play(sonido02)
+      setVerOpcion('ocultar');
     }
-  
-    constructor(props) {
-      super(props);
-      this.state = {
-        error: 0,
-        adivinado: new Set([]),
-        respuesta: palabraRandom()
+  }, [intentos])
+
+  useEffect(() => {
+    const actualIncog = Incog.split(' ').join('');
+    if (actualIncog === selectWord) {
+      setGanar(true);
+      play(sonido01)
+      setVerOpcion('ocultar');
+    }
+  }, [Incog, selectWord])
+
+  const chequearLetra = (letter) => {
+    if (perder) return;
+    if (!selectWord.includes(letter)) {
+      setIntentos(Math.min(intentos + 1, 9))
+      play(sonido03);
+      return;
+    }
+    const IncogArray = Incog.split(' ');
+    for (let i = 0; i < selectWord.length; i++) {
+      if (selectWord[i] === letter) {
+        IncogArray[i] = letter;
       }
     }
-  
-    adivinar = e => {
-      let letter = e.target.value;
-      this.setState(st => ({
-        adivinado: st.adivinado.add(letter),
-        error: st.error + (st.respuesta.includes(letter) ? 0 : 1)
-      }));
-    }
-  
-    palabra_adivinada() {
-      return this.state.respuesta.split("").map(letter => (this.state.adivinado.has(letter) ? letter : " _ "));
-    }
-  
-    generarBotones () {
-
-
-      return "abcdefghijklmnopqrstuvwxyz".split("").map(letter => (
-        <button className='Boton'
-          key={letter}
-          value={letter}
-          onClick={this.adivinar}
-          disabled={this.state.adivinado.has(letter)}
-        >
-          {letter}
-        </button>
-      ));
-    }
-  
-    ResetearBoton = () => {
-      this.setState({
-        error: 0,
-        adivinado: new Set([]),
-        respuesta: palabraRandom()
-        
-      });
-    }
-  
-    render() {
-      const Perdedor = this.state.error >= this.props.maxErrores;
-      const Ganador = this.palabra_adivinada().join("") === this.state.respuesta;
-      let gameStat = this.generarBotones();
-  
-      if (Ganador) {
-        gameStat = "Ganaste!!!"
-        play(sonido02)
-      }
-  
-      if (Perdedor) {
-        gameStat = "Perdiste!!!"
-        play(sonido03)
-      }
-  
-      return (
-        <div className="Hangman container">
-          <h1 className='text-center'>Ahorcado</h1>
-          <div className="float-right">Suposiciones incorrectas: {this.state.error} de {this.props.maxErrores}</div>
-          <div className="text-center">
-            <img src={this.props.images[this.state.error]} alt=""/>
-          </div>
-          <div className="text-center">
-            <p>Adivina la palabra: Son lenguajes de programacion</p>
-            <p>
-              {!Perdedor ? this.palabra_adivinada() : this.state.respuesta}
-            </p>
-            <p>{gameStat}</p>
-            <button className='Reiniciar' onClick={this.ResetearBoton}>Reiniciar</button>
-          </div>
-        </div>
-      )
-    }
+    setIncog(IncogArray.join(' '));
   }
 
-  function play(sonido) {
-    new Audio(sonido).play();
-  }
-  export default Hangman;
-
-
+  return (
+    <section className='game'>
+      <AhorcadoImg imageNumber={intentos} />
+      <h3 className='h3__incognita-conteiner'>{Incog}</h3>
+      <h3 className='h3__intentos-conteiner'>Intentos: {intentos} /6</h3>
+      <div className='respuestas'>
+        {
+          (perder)
+            ? <h2 className='mensaje'>¡Perdiste! La palabra era: {selectWord}</h2>
+            : ''
+            
+        }
+        {
+          (ganar)
+            ? <h2 className='mensaje'>Felicidades: ¡Ganaste!</h2>
+            : ''
+        }
+      </div>
+      <div className='opciones'>
+        {
+          letras.map((letra) => (
+            <button className={verOpcion}
+              key={letra}
+              onClick={() => chequearLetra(letra)}>
+              {letra}
+            </button>
+          ))
+        }
+      </div>
+      <div className='botones-page-game'>
+        <a href="/"><button>Home</button></a>
+        <a href="/Jugar"><button>Reiniciar</button></a>
+      </div>
+    </section>
+  )
+}
+function play(sonido) {
+  new Audio(sonido).play();
+}
+export default Juego;

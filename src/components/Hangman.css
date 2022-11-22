@@ -1,63 +1,49 @@
-.Hangman {
-  width: 100%;
-  margin-top: 50px;
+:root {
+  --var-colorBackground: red;
+  --var-colorFont: red;
+  --var-colorOne: #640404;
+  --var-colorTwo: #ff4242;
+  --var-colorThree: #640101;
+  --var-colorFour: #b90606;
+  --var-colorFive: #610303;
+  --var-colorSix: #a51501;
+  --var-colorSeven: #970303;
+  --var-colorEight: #700606;
 }
 
-.Boton {
-  padding: 1.3em 3em;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  font-weight: 500;
-  color: #000;
-  background-color: #fff;
-  border: none;
-  border-radius: 45px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
-  outline: none;
+.h2title-game {
+  background-color: var(--var-colorTwo);
+  text-align: center;
+  margin: 15px 45px 0 45px;
+  font-size: 50px;
+}
+.h3__incognita-conteiner {
+  text-align: center;
+  color: var(--var-colorFive);
+}
+.h3__intentos-conteiner {
+  text-align: center;
+  color: var(--var-colorFont);
+  background-color: var(--var-colorOne);
+  margin: 10px auto;
+  padding: 10px 0;
+  width: 200px;
+}
+.mensaje {
+  text-align: center;
+  color: var(--var-colorTwo);
 }
 
-.Boton:hover {
-  background-color: #000000;
-  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.4);
-  color: #fff;
-  transform: translateY(-7px);
+.div__img-conteiner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 }
-
-.Reiniciar{
-  --glow-color: rgb(255, 0, 0);
- --glow-spread-color: rgba(190, 19, 19);
- --enhanced-glow-color: rgba(190, 19, 19);
- --btn-color: rgba(255, 109, 109, 0.642);
- border: .25em solid var(--glow-color);
- padding: 1em 3em;
- color: var(--glow-color);
- font-size: 15px;
- font-weight: bold;
- background-color: var(--btn-color);
- border-radius: 1em;
- outline: none;
- box-shadow: 0 0 1em .25em var(--glow-color),
-        0 0 4em 1em var(--glow-spread-color),
-        inset 0 0 .75em .25em var(--glow-color);
- text-shadow: 0 0 .5em var(--glow-color);
- position: relative;
- transition: all 0.3s;
+.colgado-image {
+  width: 250px;
+  height: auto;
+  border: 3px solid var(--var-colorTwo);
+  border-radius: 5%;
 }
-
- .Reiniciar:hover{
-
-    color: var(--btn-color);
-    background-color: var(--glow-color);
-    box-shadow: 0 0 1em .25em var(--glow-color),
-           0 0 4em 2em var(--glow-spread-color),
-           inset 0 0 .75em .25em var(--glow-color);
-   }
-   
-   .Reiniciar:active {
-    box-shadow: 0 0 0.6em .25em var(--glow-color),
-           0 0 2.5em 2em var(--glow-spread-color),
-           inset 0 0 .5em .25em var(--glow-color);
-   }
